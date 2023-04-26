@@ -1,55 +1,36 @@
+
 # Astro Starter Kit: Basics
 
-```
-npm create astro@latest -- --template basics
-```
+# Blog template, powered by Blogger, Astro, Tailwind, and hosted on Cloudflare Pages
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Why use this template?
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This template offers a starting point to build a blog (or other resource) that is using a mixture of dynamic and static pages but hosted on Cloudflare pages.
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+The template uses the [Astro Framework]("https://astro.build") as its core, with CSS being handled by [Tailwindcss]("https://tailwindcss.com"). This template uses [Blogger](https:/blogger.com) as the source of blog content, by using API calls to the Blogger API to recieve the pages, but it could easily be converted to use any other blog that provides an API e.g. [Ghost](https://ghost.org). It is built to use [Cloudflare Pages](https://pages.cloudflare.com/) as the websites hosting platform, which is a free\* hosting platform for static sites, but can handle dynamic sites via a worker script which this template creates.
 
+How to use the template
+-----------------------
 
-## 🚀 Project Structure
+Edit components with your own data (e.g. change logo).
 
-Inside of your Astro project, you'll see the following folders and files:
+Edit the 2 files, `.env.development & .env.production` to have the correct BLOGID (the blogs ID on the Blogger dashboard) and [API key](https://developers.google.com/blogger/docs/3.0/using#APIKey) for the blog on Blogger. Alternativily if you are going to use a different blog backend edit the API calls on the blog/index.astro, blog/\[slug\].astro and label/\[slug\].astro pages.
 
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+This is built using [pnpm](https://pnpm.io/installation), and is advised to be run via that, if you do not have that installed then follow the instructions (simplest method is just to enable corepack in node).
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Run the command `pnpm install`, this will fetch and install in the .pnpm directory the required packages.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Setup wrangler.
 
-Any static assets, like images, can be placed in the `public/` directory.
+### How to run development testing
 
-## 🧞 Commands
+There are 2 ways to do this:
 
-All commands are run from the root of the project, from a terminal:
+*   `pnpm run dev` this will create a live dev server which will monitor for changes.
+*   `pnpm run build` then `npm run preview` this will build the project into the dist folder and then create a local server that runs as a local cloudflare server app.
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+Use the first method for normal testing while you are creating your sire, the second to test to see if it works correctly on build.
 
-## 👀 Want to learn more?
+### How to deploy
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+`pnpm run publish` command will run wrangler to publish the contents of the dist folder on the cloudflare network. It will give you an address for the deployed pages site, full information for the deployment is available on the cloudflare dashboard. 
