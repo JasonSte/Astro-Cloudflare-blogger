@@ -1,35 +1,36 @@
 ---
-export interface Props {
-	title: string;
-}
+import BaseHead from "@components/BaseHead.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
 
-const { title } = Astro.props;
+export interface Props {
+  title: string;
+  description: string;
+  current?: string;
+}
+const { title, description, current } = Astro.props;
+
+// 	<body class="m-0 font-serif text-base text-coral-900 dark:text-coral-100 bg-submarine-100 dark:bg-submarine-800">
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body
+    class="m-0 font-serif text-base text-charcoal dark:text-platinum bg-platinum dark:bg-charcoal border-charcoal dark:border-platinum"
+  >
+    <div class="flex flex-col min-h-full min-h-screen">
+      <Header current={current} />
+
+      <main
+        class="flex-1 flex flex-col relative max-w-screen-desktop px-2 py-8 box-border mx-auto w-full"
+      >
+        <slot />
+      </main>
+
+      <Footer />
+    </div>
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>

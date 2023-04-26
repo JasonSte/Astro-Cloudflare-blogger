@@ -1,0 +1,40 @@
+---
+import BaseLayout from "@layouts/Layout.astro";
+import Labels from "@components/Labels.astro";
+import Date from "@components/Date.astro";
+
+const { slug } = Astro.params;
+
+const reqs =
+  "https://www.googleapis.com/blogger/v3/blogs/" +
+  import.meta.env.BLOGID +
+  "/posts/" +
+  slug +
+  "?key=" +
+  import.meta.env.BLOGAPIKEY;
+const response = await fetch(reqs).catch((error) => {
+  // handle server fails usually caused by incorrect address
+  // want it to redirect, rather than fail but this block wont ever be hit due to it won't be checked before the !response.ok check
+  return Astro.redirect("/503");
+});
+
+if (!response.ok) {
+  //    replace the console.warn with own error handling
+  console.warn("Request to backend failed with code: " + response.status);
+  return Astro.redirect("/503");
+}
+const post = await response.json();
+
+if (!post.content) return Astro.redirect("/404");
+---
+
+<BaseLayout title={post.title} description={post.title}current="blog">
+  <div class="my-0 mx-auto max-w-5xl w-full">
+    <h2 class="">{post.title}</h2>
+    <Date date={post.published} />
+    <Labels labels={post.labels} />
+    <hr class="my-6 border-charcoal dark:border-platinum" />
+    <article set:html={post.content} />
+    <hr class="mt-10 border-charcoal dark:border-platinum" />
+  </div>
+</BaseLayout>

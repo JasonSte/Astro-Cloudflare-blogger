@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans font-bold leading-snug mx-0 mt-0 mb-2;
+  }
+
+  h1 {
+    @apply font-serif text-6xl my-10;
+  }
+
+  h2 {
+    @apply text-5xl mb-4;
+  }
+
+  h3 {
+    @apply text-4xl mb-3;
+  }
+
+  h4 {
+    @apply text-3xl mb-2;
+  }
+
+  h5 {
+    @apply text-2xl mb-2;
+  }
+
+  h6 {
+    @apply text-xl mb-2;
+  }
+
+  p,
+  ul,
+  ol {
+    @apply text-base my-3 mx-0;
+  }
+
+  ol,
+  ul {
+    @apply pl-6 ps-3 pe-3;
+  }
+
+  li {
+    @apply my-4 mx-0;
+  }
+
+  li p {
+    @apply mt-2 mb-2;
+  }
+
+  a {
+    @apply text-blue-dark dark:text-lemon underline font-semibold;
+  }
+
+  a:hover {
+    @apply text-gold dark:text-navy-light decoration-2;
+  }
+
+  code {
+    @apply font-mono w-full bg-black text-white;
+  }
+
+  p>code,
+  li>code,
+  dd>code,
+  td>code {
+    @apply px-4;
+  }
+
+  blockquote {
+    @apply m-6 p-4 border-2 rounded-2xl bg-silver dark:bg-steelgray;
+  }
+}

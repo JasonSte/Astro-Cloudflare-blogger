@@ -1,0 +1,36 @@
+---
+interface Props {
+  current: string;
+}
+
+const { current = "" } = Astro.props;
+---
+
+<nav
+  class="flex ml-auto mr-10 items-center font-sans font-bold justify-end uppercase"
+>
+  <a
+    class={`flex-1 text-inherit no-underline px-5 py-2 block relative ml-2 min-w-0 text-center ${
+      current === ""
+        ? "selected before:scale-x-1 before:bg-teal-400 dark:before:bg-navy-dark"
+        : "opacity-70 text-navy-dark dark:text-blue-light before:scale-x-1 hover:before:bg-teal-300 hover:dark:before:bg-teal-500 hover:dark:text-lemon hover:scale-x-1"
+    } before:absolute before:transition-all before:left-0 before:bottom-0 before:w-full before:h-0.5 `}
+    href="/">home</a
+  >
+  <a
+    class={`flex-1 text-inherit no-underline px-5 py-2 block relative ml-2 min-w-0 text-center ${
+      current === "about"
+        ? "selected before:scale-x-1 before:bg-teal-400 dark:before:bg-navy-dark"
+        : "opacity-70 text-navy-dark dark:text-blue-light before:scale-x-1 hover:before:bg-teal-300 hover:dark:before:bg-teal-500 hover:dark:text-lemon hover:scale-x-1"
+    } before:absolute before:transition-all before:left-0 before:bottom-0 before:w-full before:h-0.5 `}
+    href="/about">about</a
+  >
+  <a
+    class={`flex-1 text-inherit no-underline px-5 py-2 block relative ml-2 min-w-0 text-center ${
+      current === "blog"
+        ? "selected before:scale-x-1 before:bg-teal-400 dark:before:bg-navy-dark"
+        : "opacity-70 text-navy-dark dark:text-blue-light before:scale-x-1 hover:before:bg-teal-300 hover:dark:before:bg-teal-500 hover:dark:text-lemon hover:scale-x-1"
+    } before:absolute before:transition-all before:left-0 before:bottom-0 before:w-full before:h-0.5`}
+    href="/blog">blog</a
+  >
+</nav>

@@ -1,0 +1,21 @@
+---
+interface Props {
+  date: Date;
+}
+
+const { date } = Astro.props;
+let dateString: string = "";
+
+if (!date) {
+  dateString = "";
+} else {
+  dateString = new Date(date).toDateString();
+}
+---
+
+<div class="text-xs inline-block font-light">
+  Published Date:
+  <div class="uppercase font-sans font-semibold inline-block">
+    {dateString}
+  </div>
+</div>

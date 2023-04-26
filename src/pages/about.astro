@@ -1,0 +1,64 @@
+---
+import BaseLayout from "@layouts/Layout.astro";
+
+// static page so set prerenderer to true
+export const prerender = true;
+
+const title = "About Jason Stevens";
+const description = "About myself, Jason Stevens";
+---
+
+<BaseLayout title={title} description={description} current="about">
+  <h1 class="text-center">About page</h1>
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent facilisis
+    neque sit amet ultricies porta. Mauris efficitur, libero id iaculis
+    eleifend, justo sem aliquam nulla, in cursus diam lacus a nisi. Vestibulum
+    lacinia lacinia mauris, vel pretium libero faucibus et. Mauris diam elit,
+    pulvinar nec volutpat sed, blandit in erat. Pellentesque tellus turpis,
+    interdum eu nisi vel, laoreet dapibus neque. Curabitur nibh sem, mollis at
+    risus eget, fringilla viverra magna. Sed ut leo id mauris interdum viverra
+    nec malesuada dui. Nam non lacus quis urna viverra rhoncus. Curabitur
+    faucibus, ipsum vel posuere porttitor, lacus orci ultricies velit, vitae
+    feugiat turpis erat sed ante. Cras ligula arcu, suscipit in venenatis ut,
+    eleifend at orci. Cras finibus facilisis bibendum. Proin iaculis non orci ac
+    sagittis. Donec pulvinar ante vitae diam mollis, in facilisis elit molestie.
+  </p>
+  <p>
+    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+    cubilia curae; Sed mollis, ligula in interdum semper, ex risus congue elit,
+    et commodo eros felis a diam. Duis et vestibulum ex. Sed ac lacus ante. Nunc
+    dictum interdum lorem, vitae scelerisque dolor pretium eu. Suspendisse
+    aliquet sapien quis pretium mattis. Nunc hendrerit congue risus ac
+    fringilla.
+  </p>
+  <p>
+    Etiam rhoncus tincidunt massa, ac varius nisi consequat non. Maecenas
+    blandit sapien quis lorem pretium, sit amet consequat odio viverra. Maecenas
+    blandit porttitor aliquam. Donec commodo ornare fringilla. Suspendisse quis
+    est nec purus pulvinar blandit. Proin dui tellus, mattis nec mauris eu,
+    sodales pellentesque lacus. Interdum et malesuada fames ac ante ipsum primis
+    in faucibus. Aliquam gravida, lacus at scelerisque facilisis, eros arcu
+    convallis elit, sit amet tempor eros nisl vitae nulla.
+  </p>
+  <p>
+    Morbi porttitor iaculis velit ut eleifend. Cras iaculis mi est, eget posuere
+    diam lobortis sit amet. Class aptent taciti sociosqu ad litora torquent per
+    conubia nostra, per inceptos himenaeos. Integer congue eros nec lacinia
+    pretium. Nulla sollicitudin id ipsum at eleifend. Morbi ac sapien imperdiet,
+    gravida tellus ut, malesuada ante. Etiam nec interdum erat. Phasellus sit
+    amet consectetur nulla. Ut dolor urna, dignissim in nisl dictum, posuere
+    eleifend mauris. Donec imperdiet dapibus libero in accumsan. Etiam efficitur
+    ut mi sit amet consequat. Pellentesque habitant morbi tristique senectus et
+    netus et malesuada fames ac turpis egestas.
+  </p>
+  <p>
+    Morbi ut aliquet lacus. Aliquam consequat est vehicula quam feugiat mattis.
+    Phasellus eget dapibus lectus. Curabitur congue varius est vulputate
+    consequat. Proin sit amet turpis consequat, ultricies odio nec, porttitor
+    metus. Etiam feugiat tincidunt bibendum. Aliquam vel facilisis est, sit amet
+    pharetra velit. Proin eu purus nec elit pharetra bibendum et eu urna. Nullam
+    vehicula nisi vel enim tempor vulputate.
+  </p>
+</BaseLayout>

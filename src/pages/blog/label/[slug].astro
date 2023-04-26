@@ -1,0 +1,63 @@
+---
+import BaseLayout from "@layouts/Layout.astro";
+import Date from "@components/Date.astro";
+
+const { slug } = Astro.params;
+
+const reqs =
+  "https://www.googleapis.com/blogger/v3/blogs/" +
+  import.meta.env.BLOGID +
+  '/posts/search?q=label:"' +
+  slug +
+  '"&key=' +
+  import.meta.env.BLOGAPIKEY;
+
+const response = await fetch(reqs).catch((error) => {
+  // handle server fails usually caused by incorrect address
+  // want it to redirect, rather than fail but this block wont ever be hit due to it won't be checked before the !response.ok check
+  return Astro.redirect("/503");
+});
+
+if (!response.ok) {
+  //    replace the console.warn with own error handling
+  console.warn("Request to backend failed with code: " + response.status);
+  return Astro.redirect("/503");
+}
+
+const description = "Posts taged with Label: " + slug;
+
+const posts = await response.json();
+
+if (!posts.items) return Astro.redirect("/404");
+---
+
+<BaseLayout
+  title={slug!}
+  description={ description }
+  current="blog"
+>
+  <header class="text-center">
+    <h1 class="mb-4">{slug}</h1>
+  </header>
+  <div class="flex flex-row">
+    <div class="flex-[5_5_0%]">
+      {
+        posts.items?.map((post: { id: any; title: string; published: Date; }) => {
+          const href = `/blog/post/${post.id}`;
+
+          return (
+            <div class="post-item mb-12">
+              <a href={href}>
+                <h2 class="mb-1">{post.title}</h2>
+                <Date date={post.published} />
+              </a>
+            </div>
+          );
+        })
+      }
+    </div>
+    <div class="flex-1">
+      <ul class=""></ul>
+    </div>
+  </div>
+</BaseLayout>
