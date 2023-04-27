@@ -7,6 +7,8 @@ This template offers a starting point to build a blog (or other resource) that i
 
 The template uses the [Astro Framework](https://astro.build) as its core, with CSS being handled by [Tailwindcss](https://tailwindcss.com). This template uses [Blogger](https:/blogger.com) as the source of blog content, by using API calls to the Blogger API to receive the pages, but it could easily be converted to use any other blog that provides an API e.g. [Ghost](https://ghost.org). It is built to use [Cloudflare Pages](https://pages.cloudflare.com/) as the websites hosting platform, which is a free* hosting platform for static sites, but can handle dynamic sites via a worker script which this template creates.
 
+*To see an example of this template running on cloudflare pages visit: [https://astro-cloudflare-blogger.pages.dev/](https://astro-cloudflare-blogger.pages.dev/)*
+
 ## How to use the template
 
 Edit components with your own data (e.g. change logo, favicon, social image) and the pages files (e.g. this page is index.astro).
